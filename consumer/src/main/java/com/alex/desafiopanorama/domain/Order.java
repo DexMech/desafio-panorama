@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 public class Order {
 
-    @Id
+    @Id()
     private Long id;
 
     @Column(nullable = false)

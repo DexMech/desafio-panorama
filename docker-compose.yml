@@ -20,6 +20,8 @@ services:
 
   api:
     image: alexsilvaro/desafio-panorama-api
+    build:
+      context: ./api
     depends_on:
       - postgres
     environment:
@@ -33,6 +35,8 @@ services:
 
   consumer:
     image: alexsilvaro/desafio-panorama-consumer
+    build:
+      context: ./consumer
     depends_on:
       - postgres
       - rabbitmq
