@@ -1,9 +1,16 @@
 target/
+consumer/target/
+consumer/.mvn/
+api/.mvn
+api/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
+consumer/.idea/
+.idea/
+api/.idea/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
