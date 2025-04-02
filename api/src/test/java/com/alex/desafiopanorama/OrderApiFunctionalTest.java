@@ -67,6 +67,15 @@ public class OrderApiFunctionalTest {
     }
 
     @Test
+    void testInternalServerError() {
+        String url = "http://localhost:" + port + "/api/orders/1002.0/total";
+
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(500);
+
+    }
+
+    @Test
     void shouldReturnOrderCountByClient() {
         String url = "http://localhost:" + port + "/api/clients/1/orders/count";
         ResponseEntity<OrderCountResponse> response = restTemplate.getForEntity(url, OrderCountResponse.class);

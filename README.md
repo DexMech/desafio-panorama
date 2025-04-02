@@ -5,3 +5,6 @@ Para rodar a aplicação basta baixar esse projeto e rodar na raiz:
 ```
 docker compose up -d
 ```
+
+
+
