@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-    public static final String ORDER_QUEUE = "order-queue";
+    public static final String ORDER_QUEUE = "orders";
 
     @Bean
     public Queue ordersQueue() {

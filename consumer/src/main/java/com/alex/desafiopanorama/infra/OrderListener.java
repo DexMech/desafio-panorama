@@ -20,7 +20,7 @@ public class OrderListener {
         this.processOrderUseCase = processOrderUseCase;
     }
 
-    @RabbitListener(queues = "order-queue")
+    @RabbitListener(queues = "orders")
     public void consume(OrderMessage message) {
         try {
             Order order = new Order(

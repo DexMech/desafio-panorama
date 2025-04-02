@@ -6,6 +6,7 @@ import com.alex.desafiopanorama.dto.OrderTotalResponse;
 import com.alex.desafiopanorama.usecase.GetOrderCountByClientUseCase;
 import com.alex.desafiopanorama.usecase.GetOrderTotalUseCase;
 import com.alex.desafiopanorama.usecase.GetOrdersByClientUseCase;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class OrderController {
@@ -32,18 +34,21 @@ public class OrderController {
 
     @GetMapping("/orders/{id}/total")
     public ResponseEntity<OrderTotalResponse> getTotal(@PathVariable Long id) {
+        log.info("getTotal order #{}", id);
         Double total = getOrderTotalUseCase.execute(id);
         return ResponseEntity.ok(new OrderTotalResponse(total));
     }
 
     @GetMapping("/clients/{clientId}/orders/count")
     public ResponseEntity<OrderCountResponse> countByClient(@PathVariable Long clientId) {
+        log.info("countByClient #{}", clientId);
         long countByClient = getOrderCountByClientUseCase.execute(clientId);
         return ResponseEntity.ok(new OrderCountResponse(countByClient));
     }
 
     @GetMapping("/clients/{clientId}/orders")
     public List<Order> getOrdersByClient(@PathVariable Long clientId) {
+        log.info("getOrdersByClient #{}", clientId);
         return getOrdersByClientUseCase.execute(clientId);
     }
 }

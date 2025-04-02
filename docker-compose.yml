@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:15
+    image: postgres:17
     environment:
       POSTGRES_DB: panorama
       POSTGRES_USER: postgres
@@ -11,7 +11,7 @@ services:
       - panorama_net
 
   rabbitmq:
-    image: rabbitmq:3-management
+    image: rabbitmq:4.0.7-management
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -19,8 +19,7 @@ services:
       - panorama_net
 
   api:
-    build:
-      context: ./api
+    image: alexsilvaro/desafio-panorama-api
     depends_on:
       - postgres
     environment:
@@ -33,8 +32,7 @@ services:
       - panorama_net
 
   consumer:
-    build:
-      context: ./consumer
+    image: alexsilvaro/desafio-panorama-consumer
     depends_on:
       - postgres
       - rabbitmq
